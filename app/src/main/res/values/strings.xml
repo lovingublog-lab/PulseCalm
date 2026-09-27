@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PulseCalm</string>
+    <string name="title">심박 · 스트레스 체크</string>
+    <string name="subtitle">손가락을 후면 카메라와 플래시에 가볍게 대고 편하게 호흡하세요.</string>
+    <string name="start">측정 시작</string>
+    <string name="stop">측정 중지</string>
+    <string name="bpm_label">심박수</string>
+    <string name="hrv_label">HRV (RMSSD)</string>
+    <string name="stress_label">스트레스</string>
+</resources>
