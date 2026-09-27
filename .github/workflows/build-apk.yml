@@ -2,15 +2,13 @@ name: Build Android APK
 on:
   workflow_dispatch:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      ANDROID_HOME: /usr/local/lib/android/sdk
-      ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
-
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v4
 
@@ -18,12 +16,6 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-
-      - name: Install Android SDK packages
-        run: |
-          SDKMANAGER="/usr/local/lib/android/sdk/cmdline-tools/16.0/bin/sdkmanager"
-          yes | "$SDKMANAGER" --licenses >/dev/null || true
-          "$SDKMANAGER" "platforms;android-35" "build-tools;35.0.0" "platform-tools"
 
       - uses: gradle/actions/setup-gradle@v4
         with:
@@ -36,3 +28,4 @@ jobs:
         with:
           name: PulseCalm-debug-apk
           path: app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
